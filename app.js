@@ -17,7 +17,16 @@ if(typeof argv.l === 'string' && argv.l.length){
 		console.log(currentWeather);
 	}
 }
-else{ console.log('no location given')}
+else{ 
+	console.log('no location given')
+location(function(location){
+	if(location){
+		weather(location.city, function (currentWeather){
+console.log(currentWeather);
+		});
+	}else{console.log('Unable to guess location');}
+});
+}
 //if argv is a string and the length of the location is greater than 1, then 
 //call weather
 //it takes the location and takes the function which is a callback and returns the current weather
