@@ -45,3 +45,30 @@ doWork().then(function (message) {
 	console.log(error);
 });
 
+/* what exactly happens here?
+
+Do work get called and it fails 
+also the second promise also fails 
+lastly the catch is called and error gets printed
+------------------------------------------------------
+
+*/
+function getLocation (location){
+	return new Promise( function (){
+		setTimeout( function (){
+			if(typeof location == 'boolean'& location ==true){
+				reject('error message');
+			} else {
+				resolve('Prague');
+			}
+		}, 1000);
+	})
+}
+
+function getWeather(location){
+	return new Promise(function (resolve){
+		
+
+	})
+
+}
