@@ -54,7 +54,7 @@ lastly the catch is called and error gets printed
 
 */
 function getLocation (location){
-	return new Promise( function (){
+	return new Promise( function (resolve, reject){
 		setTimeout( function (){
 			if(typeof location == 'boolean'& location ==true){
 				reject('error message');
@@ -66,9 +66,13 @@ function getLocation (location){
 }
 
 function getWeather(location){
-	return new Promise(function (resolve){
+	return new Promise(function (resolve, reject){
 		
-
-	})
-
+resolve('Its 78 in'+ location + '!');
+	});
 }
+getLocation().then(function (location){
+ return getWeather(location);
+}).then(function(currentWeather){
+	console.log(currentWeather);
+});
